@@ -1,0 +1,50 @@
+[
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Docente",
+    "permissions": [
+      76,
+      66,
+      68
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Alumno",
+    "permissions": [
+      76,
+      58,
+      60
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "Vinculacion",
+    "permissions": [
+      45,
+      46,
+      48,
+      73,
+      74,
+      76,
+      57,
+      58,
+      60,
+      65,
+      66,
+      68,
+      53,
+      54,
+      56
+    ]
+  }
+}
+]

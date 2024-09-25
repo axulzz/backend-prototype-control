@@ -1,0 +1,137 @@
+[
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "191464c7-717c-4701-9f30-03bc4f95ecb8",
+    "fields": {
+        "created": "2024-09-13T04:30:41.282Z",
+        "modified": "2024-09-13T04:30:41.282Z",
+        "modality": "ET",
+        "academic_level": [
+            "0110beb3-4bd1-4262-a608-c8fe3a267916",
+            "0452e4aa-e00c-4d30-ad29-ba529f963b1d",
+            "1f6da7ee-99a6-49b9-8fa4-03349fe892e6",
+            "22683e09-81ea-425f-b62e-6c0600c320a9",
+            "231a95b1-c486-47ab-878a-9cc8cd7da198",
+            "9c6fcf28-487b-4691-82e8-38b6a8b406af",
+            "9e46e874-0910-48c4-b737-1fcdadfc064f",
+            "b8011fe2-c520-4a59-afcc-dfeb6b4fd049",
+            "cb7e2fe7-e9c0-4d74-97e5-299ef7a12be0",
+            "f0d39aec-d143-417c-aa25-4ef6f4362a6e",
+            "f1f1cb09-98d8-4f77-bb95-c6b0d26eeae7",
+            "fce68322-e1b9-4a10-acb2-9c7d3c7268d3"
+        ]
+    }
+},
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "2b1e9a7a-c502-4ac2-bf75-1107ea3f058f",
+    "fields": {
+        "created": "2024-09-13T04:22:04.603Z",
+        "modified": "2024-09-13T04:22:04.603Z",
+        "modality": "TEC",
+        "academic_level": [
+            "0110beb3-4bd1-4262-a608-c8fe3a267916",
+            "0452e4aa-e00c-4d30-ad29-ba529f963b1d",
+            "1a8aa6dc-afdb-4efc-bd35-9819c2a62058",
+            "22683e09-81ea-425f-b62e-6c0600c320a9",
+            "3cf18152-bb7f-4508-be7d-153c1a72e1e3",
+            "5369532d-2f73-4872-9b7d-44768398141d",
+            "6285e0ab-cea7-4377-a902-f4ca9fca9847",
+            "782f6bf9-36c1-4b28-83a8-d3c1d0eb98ad",
+            "9c6fcf28-487b-4691-82e8-38b6a8b406af",
+            "9d64e926-7b37-48f6-8553-a2b3c59ab0b8",
+            "9e46e874-0910-48c4-b737-1fcdadfc064f",
+            "b8011fe2-c520-4a59-afcc-dfeb6b4fd049",
+            "cb7e2fe7-e9c0-4d74-97e5-299ef7a12be0",
+            "f0d39aec-d143-417c-aa25-4ef6f4362a6e",
+            "f1f1cb09-98d8-4f77-bb95-c6b0d26eeae7",
+            "fc49b849-91d1-487e-92c8-475a92e5e1ad",
+            "fce68322-e1b9-4a10-acb2-9c7d3c7268d3"
+        ]
+    }
+},
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "8cc809ca-b67e-44a0-a0f4-49720777cb94",
+    "fields": {
+        "created": "2024-09-13T04:22:56.192Z",
+        "modified": "2024-09-13T04:22:56.192Z",
+        "modality": "SW",
+        "academic_level": [
+            "9e46e874-0910-48c4-b737-1fcdadfc064f",
+            "b8011fe2-c520-4a59-afcc-dfeb6b4fd049",
+            "f0d39aec-d143-417c-aa25-4ef6f4362a6e",
+            "fc49b849-91d1-487e-92c8-475a92e5e1ad",
+            "fce68322-e1b9-4a10-acb2-9c7d3c7268d3"
+        ]
+    }
+},
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "b2462c4d-d845-491d-becb-89f6a70a214c",
+    "fields": {
+        "created": "2024-09-13T04:28:07.226Z",
+        "modified": "2024-09-13T04:28:07.226Z",
+        "modality": "ES",
+        "academic_level": [
+            "1f6da7ee-99a6-49b9-8fa4-03349fe892e6",
+            "340fd678-0f5d-405c-8e34-aee2597243c8",
+            "3cad963c-39c1-4fb6-89e6-cab550146d38",
+            "43140b74-d4e4-4360-8236-8b9a6a9fff25",
+            "597f29ed-b434-4aa3-81fa-3b78c20bd21e",
+            "68c5f7c0-cf8a-4439-8e2e-629130397cdc",
+            "85781a02-f019-4b58-bb21-f8cd80bdf8d7",
+            "ae2dd6f5-753d-4e7d-a9fa-2837d4daf783"
+        ]
+    }
+},
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "b610d5ed-fcd9-406d-9717-eef7b504d8a6",
+    "fields": {
+        "created": "2024-09-13T04:24:27.315Z",
+        "modified": "2024-09-13T04:24:27.315Z",
+        "modality": "DC",
+        "academic_level": [
+            "1f6da7ee-99a6-49b9-8fa4-03349fe892e6",
+            "231a95b1-c486-47ab-878a-9cc8cd7da198",
+            "340fd678-0f5d-405c-8e34-aee2597243c8",
+            "3b344097-631a-46db-a482-24e28ab50e63",
+            "3cad963c-39c1-4fb6-89e6-cab550146d38",
+            "43140b74-d4e4-4360-8236-8b9a6a9fff25",
+            "45b48c4c-10b1-4400-850c-ce9793de4179",
+            "4b7188d8-ba53-4544-afa7-c762eed352a3",
+            "597f29ed-b434-4aa3-81fa-3b78c20bd21e",
+            "68c5f7c0-cf8a-4439-8e2e-629130397cdc",
+            "723deffa-fed5-4bbd-93c3-f2c5dbd30115",
+            "85781a02-f019-4b58-bb21-f8cd80bdf8d7",
+            "ae2dd6f5-753d-4e7d-a9fa-2837d4daf783",
+            "b4525e1d-a554-4042-8550-c1fad9e091f6",
+            "d9f73af3-d1c0-4426-9c60-67d0699408d3",
+            "da131c4c-2947-4600-a431-be3eaad4402f",
+            "df737a88-e41f-4ccd-af2a-150eb7f82dab",
+            "f5a418a9-e4d7-462d-8b4a-f6d6886a9814"
+        ]
+    }
+},
+{
+    "model": "prototypes.modalityassignment",
+    "pk": "f07ba800-401f-457c-84a8-cf5100735bff",
+    "fields": {
+        "created": "2024-09-13T04:26:18.848Z",
+        "modified": "2024-09-13T04:26:18.848Z",
+        "modality": "EV",
+        "academic_level": [
+            "340fd678-0f5d-405c-8e34-aee2597243c8",
+            "3cad963c-39c1-4fb6-89e6-cab550146d38",
+            "45b48c4c-10b1-4400-850c-ce9793de4179",
+            "4b7188d8-ba53-4544-afa7-c762eed352a3",
+            "782f6bf9-36c1-4b28-83a8-d3c1d0eb98ad",
+            "85781a02-f019-4b58-bb21-f8cd80bdf8d7",
+            "a60eaab0-fc10-4889-849e-7d09a45f354d",
+            "da131c4c-2947-4600-a431-be3eaad4402f",
+            "df737a88-e41f-4ccd-af2a-150eb7f82dab"
+        ]
+    }
+}
+]

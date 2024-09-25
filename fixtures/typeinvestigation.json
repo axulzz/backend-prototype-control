@@ -1,0 +1,47 @@
+[
+{
+  "model": "cores.typeinvestigation",
+  "pk": "53d44800-27b7-434c-87bb-c9d359211abe",
+  "fields": {
+    "created": "2024-04-23T04:30:49.403Z",
+    "modified": "2024-04-23T04:30:49.403Z",
+    "text": "Desarrollo Tecnológico"
+  }
+},
+{
+  "model": "cores.typeinvestigation",
+  "pk": "6059e129-0aea-4ab5-b32a-fbd6596eefe6",
+  "fields": {
+    "created": "2024-04-23T04:30:42.729Z",
+    "modified": "2024-04-23T04:30:42.729Z",
+    "text": "Desarrollo humano, Social y Emocional"
+  }
+},
+{
+  "model": "cores.typeinvestigation",
+  "pk": "89a0f5c0-9dce-46cb-a1b0-b537b44740dc",
+  "fields": {
+    "created": "2024-04-23T04:30:59.935Z",
+    "modified": "2024-04-23T04:30:59.935Z",
+    "text": "Desarrollo Sustentable y Medio Ambiente"
+  }
+},
+{
+  "model": "cores.typeinvestigation",
+  "pk": "97ff8181-2b18-4415-94c8-6c3233afb851",
+  "fields": {
+    "created": "2024-04-22T19:07:50.863Z",
+    "modified": "2024-04-22T19:07:50.863Z",
+    "text": "Investigación de Ciencias de la Salud"
+  }
+},
+{
+  "model": "cores.typeinvestigation",
+  "pk": "9f746a39-07c1-414d-933f-1018d1e5d3a2",
+  "fields": {
+    "created": "2024-04-23T04:30:54.679Z",
+    "modified": "2024-04-23T04:30:54.679Z",
+    "text": "Investigación Educativa"
+  }
+}
+]

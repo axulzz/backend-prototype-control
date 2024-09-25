@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-18 15:08-0600\n"
+"PO-Revision-Date: 2023-04-18 15:10-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: apps/registration/templates/registration/index.html:14
+msgid "Authentication"
+msgstr "Autenticación"
+
+#: apps/registration/templates/registration/index.html:16
+msgid "Welcome: "
+msgstr "Bienvenido: "
+
+#: apps/registration/templates/registration/index.html:23
+msgid "Actions"
+msgstr "Acciones"
+
+#: apps/registration/templates/registration/index.html:41
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: apps/registration/templates/registration/index.html:46
+msgid "Change your password often to reduce the risk of password cracking."
+msgstr "Cambie su contraseña con frecuencia para reducir el riesgo de que la descifren."
+
+#: apps/registration/templates/registration/index.html:76
+msgid "Logout"
+msgstr "Salir"
+
+#: apps/registration/templates/registration/index.html:81
+msgid "Logout from the system."
+msgstr "Salir del sistema."
+
+#: apps/registration/templates/registration/index.html:99
+msgid "Extra Actions"
+msgstr "Acciones adicionales"
+
+#: apps/registration/templates/registration/index.html:116
+msgid "Admin panel"
+msgstr "Panel de administración"
+
+#: apps/registration/templates/registration/index.html:121
+msgid "Open the administration panel"
+msgstr "Abrir el panel de administración"
+
+#: apps/registration/templates/registration/login.html:36
+msgid "Sign in to your account"
+msgstr "Iniciar sesión con su cuenta"
+
+#: apps/registration/templates/registration/login.html:48
+msgid "Email address"
+msgstr "Correo electrónico"
+
+#: apps/registration/templates/registration/login.html:63
+msgid "Remember me"
+msgstr "Recordarme"
+
+#: apps/registration/templates/registration/login.html:69
+msgid "Forgot your password?"
+msgstr "Olvidó su contraseña?"
+
+#: apps/registration/templates/registration/login.html:87
+msgid "Sign in"
+msgstr "Iniciar sesión"

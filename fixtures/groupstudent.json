@@ -1,0 +1,110 @@
+[
+{
+  "model": "cores.groupstudent",
+  "pk": "01af5da7-814e-404e-9a5a-c33034086861",
+  "fields": {
+    "created": "2024-04-22T19:06:55.081Z",
+    "modified": "2024-04-22T19:06:55.081Z",
+    "text": "4-D"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "084db286-a150-4cc8-96cb-54ec3d9377dd",
+  "fields": {
+    "created": "2024-04-22T19:06:55.083Z",
+    "modified": "2024-04-22T19:06:55.083Z",
+    "text": "5-A"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "1b469e41-2416-430b-9bf6-702952ecc4bf",
+  "fields": {
+    "created": "2024-04-22T19:06:55.085Z",
+    "modified": "2024-04-22T19:06:55.085Z",
+    "text": "5-B"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "51c4f6e0-769e-46d1-9508-e361b6f487c2",
+  "fields": {
+    "created": "2024-04-22T19:06:55.095Z",
+    "modified": "2024-04-22T19:06:55.095Z",
+    "text": "6-C"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "807bf2ef-006f-4c70-b691-c045bbc77807",
+  "fields": {
+    "created": "2024-04-22T19:06:55.091Z",
+    "modified": "2024-04-22T19:06:55.091Z",
+    "text": "6-A"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "9adb410e-d23f-4a78-a448-b3d03484e3f3",
+  "fields": {
+    "created": "2024-04-22T19:06:55.093Z",
+    "modified": "2024-04-22T19:06:55.093Z",
+    "text": "6-B"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "a96867ad-d4ba-4a8e-a9ac-8f8a1979a980",
+  "fields": {
+    "created": "2024-04-22T19:06:55.076Z",
+    "modified": "2024-04-22T19:06:55.076Z",
+    "text": "4-B"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "bd8c84e1-161b-4e49-abe9-e79101020f39",
+  "fields": {
+    "created": "2024-04-22T19:06:55.071Z",
+    "modified": "2024-04-22T19:06:55.071Z",
+    "text": "4-A"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "bee58424-35ab-44b6-bcac-8c4bdc29e1de",
+  "fields": {
+    "created": "2024-04-22T19:06:55.089Z",
+    "modified": "2024-04-22T19:06:55.089Z",
+    "text": "5-D"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "ef455a43-d17f-4e58-acfa-87a46a58e955",
+  "fields": {
+    "created": "2024-04-22T19:06:55.087Z",
+    "modified": "2024-04-22T19:06:55.087Z",
+    "text": "5-C"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "ff310e93-63de-4e74-b4f9-36a0251f1150",
+  "fields": {
+    "created": "2024-04-22T19:06:55.079Z",
+    "modified": "2024-04-22T19:06:55.079Z",
+    "text": "4-C"
+  }
+},
+{
+  "model": "cores.groupstudent",
+  "pk": "ff9c0ba0-89d3-4fb0-9a1a-155cfcb6def4",
+  "fields": {
+    "created": "2024-04-22T19:06:55.097Z",
+    "modified": "2024-04-22T19:06:55.097Z",
+    "text": "6-D"
+  }
+}
+]

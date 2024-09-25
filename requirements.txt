@@ -1,0 +1,13 @@
+Django
+django-filter
+django-extensions
+django-cors-headers
+djangorestframework
+django-oauth-toolkit
+drf-yasg
+drf-excel
+drf-standardized-errors
+markdown
+gunicorn
+Pillow
+

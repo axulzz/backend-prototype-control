@@ -1,0 +1,335 @@
+[
+    {
+        "model": "cores.academiclevel",
+        "pk": "0110beb3-4bd1-4262-a608-c8fe3a267916",
+        "fields": {
+            "created": "2024-09-13T03:53:33.816Z",
+            "modified": "2024-09-13T03:53:33.816Z",
+            "text": "INGENIERÍA EN ENERGÍAS RENOVABLES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "0452e4aa-e00c-4d30-ad29-ba529f963b1d",
+        "fields": {
+            "created": "2024-09-13T03:53:33.832Z",
+            "modified": "2024-09-13T03:53:33.832Z",
+            "text": "INGENIERÍA EN TECNOLOGÍAS DE LA INFORMACIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "1a8aa6dc-afdb-4efc-bd35-9819c2a62058",
+        "fields": {
+            "created": "2024-09-13T03:53:33.925Z",
+            "modified": "2024-09-13T03:53:33.925Z",
+            "text": "TÉCNICO EN ELECTRICIDAD"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "1f6da7ee-99a6-49b9-8fa4-03349fe892e6",
+        "fields": {
+            "created": "2024-09-13T03:53:33.937Z",
+            "modified": "2024-09-13T03:53:33.938Z",
+            "text": "TÉCNICO EN ADMINISTRACIÓN DE EMPRESAS"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "22683e09-81ea-425f-b62e-6c0600c320a9",
+        "fields": {
+            "created": "2024-09-13T03:53:33.901Z",
+            "modified": "2024-09-13T03:53:33.901Z",
+            "text": "TÉCNICO EN MECÁNICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "231a95b1-c486-47ab-878a-9cc8cd7da198",
+        "fields": {
+            "created": "2024-09-13T03:53:33.931Z",
+            "modified": "2024-09-13T03:53:33.931Z",
+            "text": "TÉCNICO EN PRODUCCIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "2ad79c1b-3388-4d3c-a8d0-6cee9da94bd6",
+        "fields": {
+            "created": "2024-09-13T03:53:33.819Z",
+            "modified": "2024-09-13T03:53:33.819Z",
+            "text": "INGENIERÍA EN TRANSPORTES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "340fd678-0f5d-405c-8e34-aee2597243c8",
+        "fields": {
+            "created": "2024-09-13T03:53:33.871Z",
+            "modified": "2024-09-13T03:53:33.871Z",
+            "text": "LICENCIATURA EN RELACIONES INTERNACIONALES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "3b344097-631a-46db-a482-24e28ab50e63",
+        "fields": {
+            "created": "2024-09-13T03:53:33.934Z",
+            "modified": "2024-09-13T03:53:33.934Z",
+            "text": "TÉCNICO EN DISEÑO GRÁFICO"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "3cad963c-39c1-4fb6-89e6-cab550146d38",
+        "fields": {
+            "created": "2024-09-13T03:53:33.892Z",
+            "modified": "2024-09-13T03:53:33.892Z",
+            "text": "LICENCIATURA EN EDUCACIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "3cf18152-bb7f-4508-be7d-153c1a72e1e3",
+        "fields": {
+            "created": "2024-09-13T03:53:33.822Z",
+            "modified": "2024-09-13T03:53:33.822Z",
+            "text": "INGENIERÍA EN ROBÓTICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "43140b74-d4e4-4360-8236-8b9a6a9fff25",
+        "fields": {
+            "created": "2024-09-13T03:53:33.861Z",
+            "modified": "2024-09-13T03:53:33.861Z",
+            "text": "LICENCIATURA EN DERECHO"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "45b48c4c-10b1-4400-850c-ce9793de4179",
+        "fields": {
+            "created": "2024-09-13T03:53:33.847Z",
+            "modified": "2024-09-13T03:53:33.847Z",
+            "text": "LICENCIATURA EN CONTADURÍA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "4b7188d8-ba53-4544-afa7-c762eed352a3",
+        "fields": {
+            "created": "2024-09-13T03:53:33.855Z",
+            "modified": "2024-09-13T03:53:33.855Z",
+            "text": "LICENCIATURA EN MERCADOTECNIA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "5369532d-2f73-4872-9b7d-44768398141d",
+        "fields": {
+            "created": "2024-09-13T03:53:33.796Z",
+            "modified": "2024-09-13T03:53:33.796Z",
+            "text": "INGENIERÍA INDUSTRIAL"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "597f29ed-b434-4aa3-81fa-3b78c20bd21e",
+        "fields": {
+            "created": "2024-09-13T03:53:33.835Z",
+            "modified": "2024-09-13T03:53:33.835Z",
+            "text": "LICENCIATURA EN ADMINISTRACIÓN DE EMPRESAS"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "6285e0ab-cea7-4377-a902-f4ca9fca9847",
+        "fields": {
+            "created": "2024-09-13T03:53:33.928Z",
+            "modified": "2024-09-13T03:53:33.928Z",
+            "text": "TÉCNICO EN MANTENIMIENTO INDUSTRIAL"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "68c5f7c0-cf8a-4439-8e2e-629130397cdc",
+        "fields": {
+            "created": "2024-09-13T03:53:33.858Z",
+            "modified": "2024-09-13T03:53:33.858Z",
+            "text": "LICENCIATURA EN NEGOCIOS INTERNACIONALES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "723deffa-fed5-4bbd-93c3-f2c5dbd30115",
+        "fields": {
+            "created": "2024-09-13T03:53:33.777Z",
+            "modified": "2024-09-13T03:53:33.796Z",
+            "text": "INGENIERÍA CIVIL"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "782f6bf9-36c1-4b28-83a8-d3c1d0eb98ad",
+        "fields": {
+            "created": "2024-09-13T03:53:33.829Z",
+            "modified": "2024-09-13T03:53:33.829Z",
+            "text": "INGENIERÍA BIOMÉDICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "85781a02-f019-4b58-bb21-f8cd80bdf8d7",
+        "fields": {
+            "created": "2024-09-13T03:53:33.885Z",
+            "modified": "2024-09-13T03:53:33.885Z",
+            "text": "LICENCIATURA EN COMUNICACIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "9c6fcf28-487b-4691-82e8-38b6a8b406af",
+        "fields": {
+            "created": "2024-09-13T03:53:33.898Z",
+            "modified": "2024-09-13T03:53:33.898Z",
+            "text": "TÉCNICO EN ELECTRÓNICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "9d64e926-7b37-48f6-8553-a2b3c59ab0b8",
+        "fields": {
+            "created": "2024-09-13T03:53:33.825Z",
+            "modified": "2024-09-13T03:53:33.825Z",
+            "text": "INGENIERÍA EN DISEÑO AUTOMOTRIZ"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "9e46e874-0910-48c4-b737-1fcdadfc064f",
+        "fields": {
+            "created": "2024-09-13T03:53:33.921Z",
+            "modified": "2024-09-13T03:53:33.921Z",
+            "text": "TÉCNICO EN SISTEMAS DE INFORMACIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "a60eaab0-fc10-4889-849e-7d09a45f354d",
+        "fields": {
+            "created": "2024-09-13T03:53:33.799Z",
+            "modified": "2024-09-13T03:53:33.799Z",
+            "text": "INGENIERÍA QUÍMICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "ae2dd6f5-753d-4e7d-a9fa-2837d4daf783",
+        "fields": {
+            "created": "2024-09-13T03:53:33.851Z",
+            "modified": "2024-09-13T03:53:33.851Z",
+            "text": "LICENCIATURA EN ECONOMÍA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "b4525e1d-a554-4042-8550-c1fad9e091f6",
+        "fields": {
+            "created": "2024-09-13T03:53:33.868Z",
+            "modified": "2024-09-13T03:53:33.868Z",
+            "text": "LICENCIATURA EN CIENCIAS POLÍTICAS"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "b8011fe2-c520-4a59-afcc-dfeb6b4fd049",
+        "fields": {
+            "created": "2024-09-13T03:53:33.789Z",
+            "modified": "2024-09-13T03:53:33.789Z",
+            "text": "INGENIERÍA EN SISTEMAS COMPUTACIONALES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "cb7e2fe7-e9c0-4d74-97e5-299ef7a12be0",
+        "fields": {
+            "created": "2024-09-13T03:53:33.793Z",
+            "modified": "2024-09-13T03:53:33.793Z",
+            "text": "INGENIERÍA MECÁNICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "d9f73af3-d1c0-4426-9c60-67d0699408d3",
+        "fields": {
+            "created": "2024-09-13T03:53:33.881Z",
+            "modified": "2024-09-13T03:53:33.881Z",
+            "text": "LICENCIATURA EN HISTORIA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "da131c4c-2947-4600-a431-be3eaad4402f",
+        "fields": {
+            "created": "2024-09-13T03:53:33.865Z",
+            "modified": "2024-09-13T03:53:33.865Z",
+            "text": "LICENCIATURA EN PSICOLOGÍA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "df737a88-e41f-4ccd-af2a-150eb7f82dab",
+        "fields": {
+            "created": "2024-09-13T03:53:33.889Z",
+            "modified": "2024-09-13T03:53:33.889Z",
+            "text": "LICENCIATURA EN DISEÑO GRÁFICO"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "f0d39aec-d143-417c-aa25-4ef6f4362a6e",
+        "fields": {
+            "created": "2024-09-13T03:53:33.917Z",
+            "modified": "2024-09-13T03:53:33.917Z",
+            "text": "TÉCNICO EN REDES COMPUTACIONALES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "f1f1cb09-98d8-4f77-bb95-c6b0d26eeae7",
+        "fields": {
+            "created": "2024-09-13T03:53:33.785Z",
+            "modified": "2024-09-13T03:53:33.785Z",
+            "text": "INGENIERÍA ELECTRÓNICA"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "f5a418a9-e4d7-462d-8b4a-f6d6886a9814",
+        "fields": {
+            "created": "2024-09-13T03:53:33.895Z",
+            "modified": "2024-09-13T03:53:33.895Z",
+            "text": "LICENCIATURA EN CIENCIAS DE LA COMPUTACIÓN"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "fc49b849-91d1-487e-92c8-475a92e5e1ad",
+        "fields": {
+            "created": "2024-09-13T03:53:33.812Z",
+            "modified": "2024-09-13T03:53:33.812Z",
+            "text": "INGENIERÍA EN TELECOMUNICACIONES"
+        }
+    },
+    {
+        "model": "cores.academiclevel",
+        "pk": "fce68322-e1b9-4a10-acb2-9c7d3c7268d3",
+        "fields": {
+            "created": "2024-09-13T03:53:33.904Z",
+            "modified": "2024-09-13T03:53:33.904Z",
+            "text": "TÉCNICO EN PROGRAMACIÓN"
+        }
+    }
+]
