@@ -37,7 +37,6 @@ class Student(BaselModel):
     ## Model
     - Group : uuid,
     - Specialty : char, choices,
-    - Turn : char, choices,
     - school_control_number : int,
     - user : uuid,
     """

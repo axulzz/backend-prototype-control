@@ -9,6 +9,8 @@ from openpyxl.styles import Font
 from openpyxl.worksheet.datavalidation import DataValidation
 from rest_framework.renderers import BaseRenderer
 from openpyxl.utils import get_column_letter
+from apps.cores.models import GroupStudent, TypeInvestigation
+from apps.school.models import Teacher
 
 
 class CustomXLSXRenderer(XLSXRenderer):
@@ -35,140 +37,178 @@ class CustomXLSXRenderer(XLSXRenderer):
         # Save the workbook to the response
         output = BytesIO()
         wb.save(output)
+
         return output.getvalue()
 
-class TemplateBase(XLSXFileMixin, ReadOnlyModelViewSet):
-    renderer_classes = (CustomXLSXRenderer,)
+    def _add_data_validation(self, ws, titles, header_name, choices):
+        # Find the column index for the specified header
+        column_index = next(
+            (i + 1 for i, title in enumerate(titles) if title == header_name), None
+        )
+        if column_index is not None:
+            column_letter = get_column_letter(column_index)
+            # Prepare the data validation with the list of choices
+            validation = DataValidation(
+                type="list",
+                formula1=f'"{",".join(choices)}"',
+                allow_blank=True,
+                showDropDown=False,
+                showErrorMessage=True,
+            )
+            # Apply validation to all rows in that column
+            validation.add(f"{column_letter}2:{column_letter}10000")
+            ws.add_data_validation(validation)
 
-class TeacherTemplate(TemplateBase):
-    filename = "PlantillaMaestros.xlsx"
-    column_header = {
-        "titles": [
 
-        ]
-    }
-
-class StudentTamplete(TemplateBase):
-    filename = "PlantillaAlumnos.xlsx"
-    column_header = {
-        "titles": [
-            
-        ]
-    }
-
-class CustomPrototypeXLSXRenderer(BaseRenderer):
-    media_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    format = 'xlsx'
-
-    MODALIDAD_CHOICES = [
-        "Tecnologico",
-        "Software",
-        "Didactico",
-        "Emprendedor Verde",
-        "Emprendedor Social",
-        "Emprendedor Tecnologico"
+class CustomStudentXLSRender(CustomXLSXRenderer):
+    TURN = ["MATUTINO", "VESPERTINO"]
+    SPECIALITY = [
+        "TECNICO EN PROGRAMACION",
+        "TECNICO EN CONTABILIDAD",
+        "TECNICO EN SECRETARIADO EJECUTIVO BILINGUE",
+        "TECNICO EN CIENCIA DE DATOS E INFORMACION",
     ]
-
-    LINEA_INVESTIGACION_CHOICES = [
-        "Desarrollo Tecnológico",
-        "Desarrollo humano",
-        "Social y Emocional",
-        "Desarrollo Sustentable y Medio Ambiente",
-        "Investigación de Ciencias de la Salud",
-        "Investigación Educativa"
-    ]
+    GROUPS = [group.text for group in GroupStudent.objects.all()]
 
     def render(self, data, media_type=None, renderer_context=None):
-        response = renderer_context['response']
-        view = renderer_context['view']
+        response = renderer_context["response"]
+        view = renderer_context["view"]
 
         wb = openpyxl.Workbook()
         ws = wb.active
 
         # Set the filename from the view
-        filename = getattr(view, 'filename', 'export.xlsx')
-        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        filename = getattr(view, "filename", "export.xlsx")
+        response["Content-Disposition"] = f'attachment; filename="{filename}"'
 
         # Get column headers from the view
-        column_header = getattr(view, 'column_header', {})
-        column_titles = column_header.get('titles', [])
+        column_header = getattr(view, "column_header", {})
+        column_titles = column_header.get("titles", [])
 
         # Write column headers to the first row
         for col_num, title in enumerate(column_titles, 1):
             cell = ws.cell(row=1, column=col_num, value=title)
             cell.font = Font(bold=True)
 
-        # Define data validation for lists
-        modalidad_choices = ','.join(self.MODALIDAD_CHOICES)
-        modalidad_validation = DataValidation(
-            type="list",
-            formula1=f'"{modalidad_choices}"',
-            allow_blank=True,
-            showDropDown=True
-        )
-        
-        linea_investigacion_choices = ','.join(self.LINEA_INVESTIGACION_CHOICES)
-        print(linea_investigacion_choices)
-        linea_investigacion_validation = DataValidation(
-            type="list",
-            formula1=f'"{linea_investigacion_choices}"',
-            allow_blank=True,
-            showDropDown=True
-        )
-
-        # Apply data validations to the appropriate columns
-        modalidad_column = None
-        linea_investigacion_column = None
-        for col_num, title in enumerate(column_titles, 1):
-            if title == "Modalidad":
-                modalidad_column = col_num
-            elif title == "Línea de Investigación":
-                linea_investigacion_column = col_num
-
-        if modalidad_column:
-            modalidad_column_letter = get_column_letter(modalidad_column)
-            modalidad_range = f'{modalidad_column_letter}2:{modalidad_column_letter}1048576'
-            modalidad_validation.add(modalidad_range)
-        
-        if linea_investigacion_column:
-            linea_investigacion_column_letter = get_column_letter(linea_investigacion_column)
-            linea_range = f'{linea_investigacion_column_letter}2:{linea_investigacion_column_letter}1048576'
-            linea_investigacion_validation.add(linea_range)
-
-        # Add data validations to the worksheet
-        ws.add_data_validation(modalidad_validation)
-        ws.add_data_validation(linea_investigacion_validation)
+        self._add_data_validation(ws, column_titles, "Especialidad", self.SPECIALITY)
+        self._add_data_validation(ws, column_titles, "Turno", self.TURN)
+        self._add_data_validation(ws, column_titles, "Grupo", self.GROUPS)
 
         # Save the workbook to the response
         output = BytesIO()
         wb.save(output)
-        output.seek(0)
+
         return output.getvalue()
+
+
+class CustomPrototypeXLSXRenderer(CustomXLSXRenderer):
+    TYPE_INVESTIGATION = [
+        type_investigation.text
+        for type_investigation in TypeInvestigation.objects.all()
+    ]
+    TURN = ["MATUTINO", "VESPERTINO"]
+    MODALITY = [
+        "TECNOLOGICO",
+        "SOFTWARE",
+        "DIDACTICO",
+        "EMPRENDEDOR_VERDE",
+        "EMPRENDEDOR_SOCIAL",
+        "EMPRENDEDOR_TECNOLOGICO",
+    ]
+
+    def render(self, data, media_type=None, renderer_context=None):
+        response = renderer_context["response"]
+        view = renderer_context["view"]
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+
+        # Set the filename from the view
+        filename = getattr(view, "filename", "export.xlsx")
+        response["Content-Disposition"] = f'attachment; filename="{filename}"'
+
+        # Get column headers from the view
+        column_header = getattr(view, "column_header", {})
+        column_titles = column_header.get("titles", [])
+
+        # Write column headers to the first row
+        for col_num, title in enumerate(column_titles, 1):
+            cell = ws.cell(row=1, column=col_num, value=title)
+            cell.font = Font(bold=True)
+
+        self._add_data_validation(
+            ws, column_titles, "Línea de investigación", self.TYPE_INVESTIGATION
+        )
+        self._add_data_validation(ws, column_titles, "Turno", self.TURN)
+        self._add_data_validation(ws, column_titles, "Modalidad", self.MODALITY)
+
+        self._add_data_validation(ws, column_titles, "Autor 1", ["1"])
+        self._add_data_validation(ws, column_titles, "Autor 2", ["2"])
+        self._add_data_validation(ws, column_titles, "Autor 3", ["3"])
+        self._add_data_validation(ws, column_titles, "Autor 4", ["4"])
+
+        # Save the workbook to the response
+        output = BytesIO()
+        wb.save(output)
+
+        return output.getvalue()
+
+
+class TemplateBase(XLSXFileMixin, ReadOnlyModelViewSet):
+    renderer_classes = (CustomXLSXRenderer,)
+
+
+class TeacherTemplate(TemplateBase):
+    filename = "PlantillaMaestros.xlsx"
+    column_header = {"titles": []}
+
+
+class StudentTamplete(TemplateBase):
+    filename = "PlantillaAlumnos.xlsx"
+    renderer_classes = (CustomStudentXLSRender,)
+
+    column_header = {
+        "titles": [
+            "Nombres",
+            "Apellidos",
+            "CURP",
+            "Dirección",
+            "Correo institucional",
+            "Numero celular",
+            "Turno",
+            "Numero de control escolar",
+            "Grupo",
+            "Especialidad",
+        ]
+    }
+
 
 class PrototypeTemplate(TemplateBase):
     filename = "PlatillasPrototipos.xlsx"
     renderer_classes = (CustomPrototypeXLSXRenderer,)
+
     column_header = {
         "titles": [
             "Nombre del prototipo",
             "Modalidad",
-            "Línea de Investigación",
-            "Maestro de Métodos",
-            "ASESOR METODOLOGICO",
-            "ASESOR TECNICO",
+            "Línea de investigación",
+            "Maestro(a) de métodos",
+            "Asesor(a) metodologico",
+            "Asesor(a) tecnico",
             "Autor 1",
-            "NOMBRE COMPLETO",
+            "Nombre completo",
             "Autor 2",
-            "NOMBRE COMPLETO",
+            "Nombre completo",
             "Autor 3",
-            "NOMBRE COMPLETO",
+            "Nombre completo",
             "Autor 4",
-            "NOMBRE COMPLETO",
+            "Nombre completo",
         ],
     }
 
+
 class PrototypeDonwload(TemplateBase):
-    filename = "PlatillasPrototipos.xlsx"
+    filename = "ReportePrototipos.xlsx"
     column_header = {
         "titles": [
             "NOMBRE PROTOTIPO",

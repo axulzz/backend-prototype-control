@@ -2,6 +2,7 @@ from django.db import transaction
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
+from openpyxl import load_workbook
 from rest_framework.exceptions import ValidationError
 from rest_framework.viewsets import mixins, GenericViewSet
 from rest_framework.response import Response
@@ -170,7 +171,7 @@ class TeacherViewSet(
         serializer_user.is_valid(raise_exception=True)
         self.perform_create(serializer_user)
 
-        data.update({"user": serializer_user.data.get("id", None)})  # type: ignore
+        data.update({"user": serializer_user.data.get("id", None)})
 
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
@@ -209,3 +210,81 @@ class TeacherViewSet(
             instance._prefetched_objects_cache = {}
 
         return Response(serializer.data)
+
+
+SPECIALITY = {
+    "TECNICO EN PROGRAMACION": "TEP",
+    "TECNICO EN CONTABILIDAD": "TEC",
+    "TECNICO EN SECRETARIADO EJECUTIVO BILINGUE": "TESEB",
+    "TECNICO EN CIENCIA DE DATOS E INFORMACION": "TECDEI",
+}
+
+
+class UploadStudentViewSets(mixins.CreateModelMixin, GenericViewSet):
+    serializer_class = StudentCreateSerializer
+
+    def get_queryset(self):
+        return Student.objects.all()
+
+    @transaction.atomic
+    def create(self, request, *args, **kwargs):
+        file_xlx = request.data.get("file")
+
+        if not file_xlx:
+            return Response(
+                {"error": "No file provided."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        wb = load_workbook(filename=file_xlx, read_only=True)
+
+        for sheet in wb.worksheets:
+            # Iterar sobre cada fila de la hoja
+            for index, row in enumerate(sheet.iter_rows(values_only=True)):
+                if index == 0:
+                    continue
+
+                if row[6] == "VESPERTINO":
+                    turn = "T/V"
+
+                elif row[6] == "MATUTINO":
+                    turn = "T/M"
+
+                if row[4] != None:
+                    if User.objects.get(email=row[4]).email == row[4]: 
+                        continue
+
+                    serializer_user = UserCreateSerializer(
+                        data={
+                            "first_name": row[0],
+                            "last_name": row[1],
+                            "curp": row[2],
+                            "address": row[3],
+                            "email": row[4],
+                            "number_phone": row[5],
+                            "groups": [Group.objects.get(name="Alumno").pk],
+                            "turn": turn,
+                        }
+                    )
+
+                    serializer_user.is_valid(raise_exception=True)
+                    self.perform_create(serializer_user)
+
+                    serializer = self.get_serializer(
+                        data={
+                            "user": serializer_user.data.get("id", None),
+                            "school_control_number": row[7],
+                            "group": GroupStudent.objects.get(text=row[8]).id,
+                            "specialty": SPECIALITY.get(row[9]),
+                        }
+                    )
+                    serializer.is_valid(raise_exception=True)
+                    self.perform_create(serializer)
+
+        try:
+            headers = self.get_success_headers(serializer.data)
+        except UnboundLocalError:
+            raise ValidationError({"students": "este archivo ya esta inportado"})
+
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )

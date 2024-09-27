@@ -6,7 +6,7 @@ from apps.cores.viewsets import (
     TypeInvestigationViewSet,
 )
 from apps.prototypes.viewsets import PrototypeDownloadReporterViewsets, PrototypeViewSet
-from apps.school.viewsets import StudentViewSet, TeacherViewSet
+from apps.school.viewsets import StudentViewSet, TeacherViewSet, UploadStudentViewSets
 from apps.users.viewsets import UserViewSet
 from apps.prototypes.viewsets import (
     PrototypeTemplateExcelDownload,
@@ -19,6 +19,7 @@ router = DefaultRouter()
 router.register("school/students", StudentViewSet, basename="student")
 router.register("school/teachers", TeacherViewSet, basename="teacher")
 router.register("school/users", UserViewSet, basename="user")
+router.register("school/upload-students", UploadStudentViewSets, basename="upload-students")
 
 router.register("prototype-control/prototypes", PrototypeViewSet, basename="prototype")
 router.register(
