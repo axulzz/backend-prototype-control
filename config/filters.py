@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 
-from apps.cores.models import GroupStudent
+from apps.cores.models import AcademicGroup
 from apps.prototypes.models import Prototype
 from apps.school.models import Student, Teacher
 
@@ -92,5 +92,5 @@ class StudentsFilters(filters.FilterSet):
 
 class GroupFilters(filters.FilterSet):
     class Meta:
-        model = GroupStudent
+        model = AcademicGroup
         fields = ["text"]

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-i9zit($_s!55yn7$h(ro&-o$eds&#s__gmc1%m-72@lop*^58g"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,15 +45,15 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "django_extensions",
-    # Auth
+    # Oauth2
     "corsheaders",
     "oauth2_provider",
     "apps.users",
     # Apps
-    "apps.registration",
     "apps.cores",
     "apps.school",
     "apps.prototypes",
+    "apps.registration",
 ]
 
 MIDDLEWARE = [
@@ -70,7 +70,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -91,27 +90,33 @@ AUTH_USER_MODEL = "users.User"
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+LOGIN_REDIRECT_URL = "account:auth_index"
+LOGOUT_REDIRECT_URL = "account:auth_index"
+LOGIN_URL = "/accounts/login"
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB", "postgres"),
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST"),  # set in docker-compose.yml
+        "PORT": os.environ.get("POSTGRES_PORT", 5432),  # default postgres port
+    },
 }
-
-LOGIN_URL = "registration:login"
-LOGIN_REDIRECT_URL = "registration:auth_index"
-
-# LOGOUT_REDIRECT_URL = "registration:auth_index"
-LOGOUT_REDIRECT_URL = '/auth/signout'
-
-CORS_ORIGIN_ALLOW_ALL = True
-
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -128,14 +133,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
+# https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGES = [
     ("en-us", _("English")),
     ("es-mx", _("Spanish")),
 ]
+
+# LANGUAGE_CODE = 'en-us'
 
 LANGUAGE_CODE = "es-mx"
 
@@ -146,9 +152,11 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+
+STATIC_URL = "/static/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -156,10 +164,11 @@ STATIC_URL = "static/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# OAUTH2 Config
+# https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html
 
 SIDE_ID = 1
 
@@ -180,8 +189,6 @@ OIDC_RSA_PRIVATE_KEY, OIDC_ENABLED = get_oidc_rsa_private_key()
 OAUTH2_PROVIDER = {
     "OIDC_ENABLED": True,
     "OIDC_RSA_PRIVATE_KEY": OIDC_RSA_PRIVATE_KEY,
-    "OIDC_RP_INITIATED_LOGOUT_ENABLED": True,
-    "OIDC_RP_INITIATED_LOGOUT_ALWAYS_PROMPT": True,
     "SCOPES": {
         "openid": "OpenID Connect scope",
         "profile": "Profile scope",
@@ -195,10 +202,6 @@ OAUTH2_PROVIDER = {
 }
 
 REST_FRAMEWORK = {
-    "DEFAULT_RENDERER_CLASSES": (
-        "rest_framework.renderers.JSONRenderer",
-        "rest_framework.renderers.BrowsableAPIRenderer",  # Para que la interfaz web esté disponible
-    ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
     ),
@@ -257,7 +260,4 @@ ROLES = [
     },
 ]
 
-# Cors
-# https://github.com/adamchainz/django-cors-headers
-
-CORS_ALLOW_HEADERS = list(default_headers) + ["Accept-Language", "x-workspace-id"]
+CORS_ALLOW_ALL_ORIGINS = True

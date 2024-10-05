@@ -8,7 +8,7 @@ from rest_framework.viewsets import mixins, GenericViewSet
 from rest_framework.response import Response
 from rest_framework import status
 
-from apps.cores.models import GroupStudent
+from apps.cores.models import AcademicGroup
 from apps.cores.serializers import (
     StudentCreateSerializer,
     StudentListSerializer,
@@ -53,8 +53,8 @@ class StudentViewSet(
         data = request.data
 
         try:
-            group = GroupStudent.objects.get(id=data.get("group", None)).id
-        except GroupStudent.DoesNotExist:
+            group = AcademicGroup.objects.get(id=data.get("group", None)).id
+        except AcademicGroup.DoesNotExist:
             group = None
 
         data.update({"group": group})
@@ -273,7 +273,7 @@ class UploadStudentViewSets(mixins.CreateModelMixin, GenericViewSet):
                         data={
                             "user": serializer_user.data.get("id", None),
                             "school_control_number": row[7],
-                            "group": GroupStudent.objects.get(text=row[8]).id,
+                            "group": AcademicGroup.objects.get(text=row[8]).id,
                             "specialty": SPECIALITY.get(row[9]),
                         }
                     )
@@ -283,7 +283,7 @@ class UploadStudentViewSets(mixins.CreateModelMixin, GenericViewSet):
         try:
             headers = self.get_success_headers(serializer.data)
         except UnboundLocalError:
-            raise ValidationError({"students": "este archivo ya esta inportado"})
+            raise ValidationError({"students": "este archivo ya esta importado"})
 
         return Response(
             serializer.data, status=status.HTTP_201_CREATED, headers=headers

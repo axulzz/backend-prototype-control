@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from apps.cores.models import AcademicLevel, GroupStudent, TypeInvestigation
+from apps.cores.models import AcademicLevel, AcademicGroup, TypeInvestigation
 
 # Register your models here.
 
 
-@admin.register(GroupStudent)
-class GroupStudentAdmin(admin.ModelAdmin):
+@admin.register(AcademicGroup)
+class AcademicGroupAdmin(admin.ModelAdmin):
     list_display = ["id", "text"]
 
 

@@ -4,7 +4,7 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 
-from apps.cores.models import GroupStudent
+from apps.cores.models import AcademicGroup
 from apps.prototypes.models import Member, Prototype, TeacherRoles
 from apps.school.models import Student, Teacher
 
@@ -59,11 +59,11 @@ class Command(BaseCommand):
         group_split = group_base.split("°")
 
         if len(group_split) >= 2:
-            return GroupStudent.objects.get(
+            return AcademicGroup.objects.get(
                 text=f"{group_split[0].strip()}-{group_split[1].strip()}"
             )
 
-        return GroupStudent.objects.get(text=f"{group_base[:-1]}-{group_base[1]}")
+        return AcademicGroup.objects.get(text=f"{group_base[:-1]}-{group_base[1]}")
 
     def get_modality(self, modality: str):
         if modality in ["Tecnologico", "TECNOLÓGICO"]:

@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 
 from rest_framework import serializers
 
-from apps.cores.models import AcademicLevel, GroupStudent, TypeInvestigation
+from apps.cores.models import AcademicLevel, AcademicGroup, TypeInvestigation
 from apps.prototypes.models import Member, Prototype, TeacherRoles
 from apps.school.models import Student, Teacher
 from apps.users.serializers import UserListSerializer
@@ -40,8 +40,8 @@ class StudentListSerializer(serializers.ModelSerializer):
 
     def get_group(self, obj):
         try:
-            return GroupStudent.objects.get(id=obj.group_id).text
-        except GroupStudent.DoesNotExist:
+            return AcademicGroup.objects.get(id=obj.group_id).text
+        except AcademicGroup.DoesNotExist:
             return None
         
 
@@ -632,7 +632,7 @@ class TypeInvestigationSerializer(serializers.ModelSerializer):
         model = TypeInvestigation
 
 
-class GroupStudentSerializer(serializers.ModelSerializer):
+class AcademicGroupSerializer(serializers.ModelSerializer):
 
     class Meta(MetaBaseList):
-        model = GroupStudent
+        model = AcademicGroup

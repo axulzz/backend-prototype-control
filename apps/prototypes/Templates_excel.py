@@ -9,7 +9,7 @@ from openpyxl.styles import Font
 from openpyxl.worksheet.datavalidation import DataValidation
 from rest_framework.renderers import BaseRenderer
 from openpyxl.utils import get_column_letter
-from apps.cores.models import GroupStudent, TypeInvestigation
+from apps.cores.models import AcademicGroup, TypeInvestigation
 from apps.school.models import Teacher
 
 
@@ -68,7 +68,10 @@ class CustomStudentXLSRender(CustomXLSXRenderer):
         "TECNICO EN SECRETARIADO EJECUTIVO BILINGUE",
         "TECNICO EN CIENCIA DE DATOS E INFORMACION",
     ]
-    GROUPS = [group.text for group in GroupStudent.objects.all()]
+
+    @classmethod
+    def get_groups(cls):
+        return [group.text for group in AcademicGroup.objects.all()]
 
     def render(self, data, media_type=None, renderer_context=None):
         response = renderer_context["response"]
@@ -92,7 +95,7 @@ class CustomStudentXLSRender(CustomXLSXRenderer):
 
         self._add_data_validation(ws, column_titles, "Especialidad", self.SPECIALITY)
         self._add_data_validation(ws, column_titles, "Turno", self.TURN)
-        self._add_data_validation(ws, column_titles, "Grupo", self.GROUPS)
+        self._add_data_validation(ws, column_titles, "Grupo", self.get_groups())
 
         # Save the workbook to the response
         output = BytesIO()
@@ -102,11 +105,13 @@ class CustomStudentXLSRender(CustomXLSXRenderer):
 
 
 class CustomPrototypeXLSXRenderer(CustomXLSXRenderer):
-    TYPE_INVESTIGATION = [
-        type_investigation.text
-        for type_investigation in TypeInvestigation.objects.all()
-    ]
-    TURN = ["MATUTINO", "VESPERTINO"]
+    @classmethod
+    def get_type_investigation(cls):
+        return [
+            type_investigation.text
+            for type_investigation in TypeInvestigation.objects.all()
+        ]
+
     MODALITY = [
         "TECNOLOGICO",
         "SOFTWARE",
@@ -137,15 +142,14 @@ class CustomPrototypeXLSXRenderer(CustomXLSXRenderer):
             cell.font = Font(bold=True)
 
         self._add_data_validation(
-            ws, column_titles, "Línea de investigación", self.TYPE_INVESTIGATION
+            ws, column_titles, "Línea de investigación", self.get_type_investigation()
         )
-        self._add_data_validation(ws, column_titles, "Turno", self.TURN)
         self._add_data_validation(ws, column_titles, "Modalidad", self.MODALITY)
 
-        self._add_data_validation(ws, column_titles, "Autor 1", ["1"])
-        self._add_data_validation(ws, column_titles, "Autor 2", ["2"])
-        self._add_data_validation(ws, column_titles, "Autor 3", ["3"])
-        self._add_data_validation(ws, column_titles, "Autor 4", ["4"])
+        self._add_data_validation(ws, column_titles, "Autor 1", ["1", " "])
+        self._add_data_validation(ws, column_titles, "Autor 2", ["2", " "])
+        self._add_data_validation(ws, column_titles, "Autor 3", ["3", " "])
+        self._add_data_validation(ws, column_titles, "Autor 4", ["4", " "])
 
         # Save the workbook to the response
         output = BytesIO()
@@ -190,19 +194,20 @@ class PrototypeTemplate(TemplateBase):
     column_header = {
         "titles": [
             "Nombre del prototipo",
+            "No.registro",
             "Modalidad",
             "Línea de investigación",
-            "Maestro(a) de métodos",
-            "Asesor(a) metodologico",
-            "Asesor(a) tecnico",
+            "Maestro(a) de métodos(correo)",
+            "Asesor(a) metodologico(correo)",
+            "Asesor(a) técnico(correo)",
             "Autor 1",
-            "Nombre completo",
+            "Correo institucional de alumno(a)",
             "Autor 2",
-            "Nombre completo",
+            "Correo institucional de alumno(a)",
             "Autor 3",
-            "Nombre completo",
+            "Correo institucional de alumno(a)",
             "Autor 4",
-            "Nombre completo",
+            "Correo institucional de alumno(a)",
         ],
     }
 

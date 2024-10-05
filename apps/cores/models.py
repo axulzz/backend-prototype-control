@@ -26,13 +26,13 @@ class CoreBase(BaselModel):
         abstract = True
 
 
-class TypeInvestigation(CoreBase):
-    pass
-
-
-class GroupStudent(CoreBase):
-    pass
-
-
 class AcademicLevel(CoreBase):
+    pass
+
+
+class AcademicGroup(CoreBase):
+    pass
+
+
+class TypeInvestigation(CoreBase):
     pass

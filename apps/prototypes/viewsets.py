@@ -8,6 +8,7 @@ from rest_framework.viewsets import mixins, GenericViewSet
 from rest_framework.response import Response
 from rest_framework import status
 
+from openpyxl import load_workbook
 
 from apps.cores.serializers import (
     MemberCreatetSerializer,
@@ -27,6 +28,8 @@ from apps.prototypes.Templates_excel import (
 from apps.prototypes.models import Member, Prototype, TeacherRoles
 from apps.prototypes.random_teachers import get_teachers_by_modality
 from apps.school.models import Student, Teacher
+from apps.cores.models import TypeInvestigation
+
 from config.filters import PrototypeDonwloadFilters, PrototypeFilters
 
 
@@ -272,3 +275,93 @@ class PrototypeTemplateExcelDownload(PrototypeTemplate):
 
     def get_queryset(self):
         return Prototype.objects.all()
+
+
+def get_modality(modality: str):
+    MODALITY = {
+        "TECNOLOGICO": "TEC",
+        "SOFTWARE": "SW",
+        "DIDACTICO": "DC",
+        "EMPRENDEDOR_VERDE": "EV",
+        "EMPRENDEDOR_SOCIAL": "ES",
+        "EMPRENDEDOR_TECNOLOGICO": "ET",
+    }
+    return MODALITY.get(modality, "")
+
+
+class UploadPrototypeViewSets(mixins.CreateModelMixin, GenericViewSet):
+    serializer_class = PrototypeCreatedSerializer
+
+    def get_queryset(self):
+        return Student.objects.all()
+
+    @transaction.atomic
+    def create(self, request, *args, **kwargs):
+        file_xlx = request.data.get("file")
+        members_list_id = []
+
+        if not file_xlx:
+            return Response(
+                {"error": "No file provided."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        wb = load_workbook(filename=file_xlx, read_only=True)
+
+        for sheet in wb.worksheets:
+            # Iterar sobre cada fila de la hoja
+            for index, row in enumerate(sheet.iter_rows(values_only=True)):
+                if index == 0:
+                    continue
+
+                try:
+                    for index, student_enumerate in enumerate(range(8, 15, 2)):
+                        if row[student_enumerate]:
+                            member = Member.objects.create(
+                                author=index + 1,
+                                student=Student.objects.get(
+                                    user__email=row[student_enumerate]
+                                ),
+                            )
+
+                            members_list_id.append(member.id)
+                except IntegrityError:
+                    continue
+
+                advisors_technological_id = TeacherRoles.objects.create(
+                    roles="AT",
+                    teacher_data=Teacher.objects.get(user__email=row[5]),
+                ).id
+
+                advisors_meteorologic_id = TeacherRoles.objects.create(
+                    roles="MT",
+                    teacher_data=Teacher.objects.get(user__email=row[6]),
+                ).id
+
+                serializer = self.get_serializer(
+                    data={
+                        "name": row[0],
+                        "registry_number": row[1],
+                        "modality": get_modality(row[2]),
+                        "type_investigation": TypeInvestigation.objects.get(
+                            text=row[3].strip()
+                        ).id,
+                        "members": members_list_id,
+                        "teacher_methods": Teacher.objects.get(user__email=row[4]).id,
+                        "teacher_advisors": [
+                            advisors_technological_id,
+                            advisors_meteorologic_id,
+                        ],
+                    }
+                )
+
+                serializer.is_valid(raise_exception=True)
+                self.perform_create(serializer)
+
+        try:
+            headers = self.get_success_headers(serializer.data)
+        except UnboundLocalError:
+            raise ValidationError({"prototype": "este archivo ya esta importado"})
+
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )

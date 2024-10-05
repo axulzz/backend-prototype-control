@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
-from apps.cores.models import AcademicLevel, BaselModel, GroupStudent
+from apps.cores.models import AcademicLevel, BaselModel, AcademicGroup
 
 User = get_user_model()
 
@@ -55,7 +55,7 @@ class Student(BaselModel):
     #     Vespertine = "T/V", _("Vespertino")
     #     Morning = "T/M", _("Matutino")
 
-    group = models.ForeignKey(GroupStudent, models.CASCADE, null=False, blank=False)
+    group = models.ForeignKey(AcademicGroup, models.CASCADE, null=False, blank=False)
     specialty = models.CharField(
         max_length=6,
         choices=Specialty.choices,

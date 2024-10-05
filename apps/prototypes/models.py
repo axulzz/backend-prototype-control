@@ -100,4 +100,4 @@ class Prototype(BaselModel):
         ordering = ("-created",)
 
     def __str__(self) -> str:
-        return f"{self.name}"  # type: ignore
+        return f"{self.name}"

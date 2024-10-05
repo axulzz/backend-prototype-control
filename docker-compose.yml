@@ -1,0 +1,51 @@
+services:
+  django:
+    restart: unless-stopped
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SECRET_KEY
+      - DJANGO_SUPERUSER_USERNAME
+      - DJANGO_SUPERUSER_PASSWORD
+      - DJANGO_SUPERUSER_EMAIL
+      - DJANGO_DEBUG=False   
+      - EMAIL_FROM
+      - EMAIL_HOST=mailcatcher
+      - EMAIL_PORT=1025
+      - CLIENT_ID
+      - CLIENT_SECRET
+      - REDIRECT_URI
+      - ALGORITHM
+      - POSTGRES_HOST=db
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - DOCKER_COMPOSE_FILE
+
+  db:
+    image: postgres:alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER 
+      - POSTGRES_PASSWORD
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:

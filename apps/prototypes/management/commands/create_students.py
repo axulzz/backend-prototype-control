@@ -5,7 +5,7 @@ import openpyxl
 from faker import Faker
 from openpyxl import Workbook
 
-from apps.cores.models import GroupStudent
+from apps.cores.models import AcademicGroup
 from apps.school.models import Student
 
 
@@ -87,7 +87,7 @@ class Command(BaseCommand):
                         school_control_number=row[4],
                         specialty=modality,
                         # turn=turn,
-                        group=GroupStudent.objects.get(text=f"{row[3][:-1]}-{row[3][1]}"),
+                        group=AcademicGroup.objects.get(text=f"{row[3][:-1]}-{row[3][1]}"),
                     )
                     self.stdout.write(self.style.SUCCESS(f"Creado Alumno: {user.first_name}"))
 

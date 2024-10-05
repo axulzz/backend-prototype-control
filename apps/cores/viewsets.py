@@ -1,7 +1,11 @@
 from rest_framework.viewsets import mixins, GenericViewSet
 
-from apps.cores.models import AcademicLevel, GroupStudent, TypeInvestigation
-from apps.cores.serializers import AcademyLevelSerializer, GroupStudentSerializer, TypeInvestigationSerializer
+from apps.cores.models import AcademicLevel, AcademicGroup, TypeInvestigation
+from apps.cores.serializers import (
+    AcademyLevelSerializer,
+    AcademicGroupSerializer,
+    TypeInvestigationSerializer,
+)
 
 
 class AcademyLevelViewSet(mixins.ListModelMixin, GenericViewSet):
@@ -20,9 +24,8 @@ class TypeInvestigationViewSet(mixins.ListModelMixin, GenericViewSet):
         return self.queryset
 
 
-class GroupStudentsViewSet(mixins.ListModelMixin, GenericViewSet):
-    queryset = GroupStudent.objects.all()
-    serializer_class = GroupStudentSerializer
+class AcademicGroupViewSet(mixins.ListModelMixin, GenericViewSet):
+    serializer_class = AcademicGroupSerializer
 
     def get_queryset(self):
-        return self.queryset
+        return AcademicGroup.objects.all()
